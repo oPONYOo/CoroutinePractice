@@ -2,9 +2,10 @@ package com.example.coroutinepractice
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 // suspend 함수
+// suspend 함수를 통해 코루틴 빌더안의 코드 블럭을 분리할 수 있다.
 // delay, lauch 등의 함수들을 포함한 코드들을
 // 함수로 분리할 때는 함수의 앞에 suspend 키워드를 붙이면 된다.
 // 딜레이 함수는 코루틴 혹은 suspend 함수 내에서만 쓸 수 있음
@@ -25,6 +26,8 @@ suspend fun doTwo() {
     println("2!")
 }
 
+
+
 // 컴파일러가 예상치 못할 경우에 runBlocking에 unit을 붙혀야함
 fun main() = runBlocking<Unit> { //리턴 타입지정가능
     launch {
@@ -33,5 +36,6 @@ fun main() = runBlocking<Unit> { //리턴 타입지정가능
     launch {
         doOne()
     }
+
     doTwo()
 }
