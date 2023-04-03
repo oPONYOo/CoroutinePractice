@@ -25,14 +25,16 @@ private suspend fun doOneTwoThree() = coroutineScope { // this: 부모 코루틴
         println("launch1: ${Thread.currentThread().name}")
         println("1!")
     }
-    launch {
-        println("launch1: ${Thread.currentThread().name}")
-        delay(500L)
-        println("2!")
-    }
+//    repeat(1000) {
+        launch {
+            println("launch1: ${Thread.currentThread().name}")
+            delay(500L)
+            println("2!")
+        }
+//    }
     println("4!") // 두 번째로 출력
 }
-
+// 코루틴은 협력적으로 동작하기 때문에 여러 코루틴을 만드는 것에 큰 비용이 들지 않는다.
 fun main(): Unit = runBlocking<Unit> {// this는 코루틴
     doOneTwoThree() // suspension point
     println("runBlocking: ${Thread.currentThread().name}")
