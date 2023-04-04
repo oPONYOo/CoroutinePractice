@@ -1,4 +1,4 @@
-package com.example.coroutinepractice
+package com.example.coroutinepractice.cancellation
 
 import kotlinx.coroutines.*
 
